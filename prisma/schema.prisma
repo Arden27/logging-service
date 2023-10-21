@@ -14,7 +14,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL") // uses connection pooling
+  url = env("DATABASE__URL") // uses connection pooling
 }
 
 model Session {
@@ -30,5 +30,5 @@ model Message {
   time          DateTime?
   createdAt     DateTime     @default(now())
   SessionId     String
-  Session       Session      @relation(fields: [SessionId], references: [id], onDelete: Cascade)
+  Session       Session  @relation(fields: [SessionId], references: [id], onDelete: Cascade)
 }
